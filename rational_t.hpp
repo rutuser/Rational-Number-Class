@@ -46,11 +46,15 @@ public:
   bool less(const rational_t &r, const double precision = EPSILON) const;
   bool cero_equal(const double precision) const;
 
+  int mcd(int a, int b);
+  int mcm(int a, int b);
+
+
   // FASE IV
-  // rational_t add(const rational_t&);
-  // rational_t substract(const rational_t&);
-  // rational_t multiply(const rational_t&);
-  // rational_t divide(const rational_t&);
+   rational_t add(const rational_t&);
+   rational_t substract(const rational_t&);
+   rational_t multiply(const rational_t&);
+   rational_t divide(const rational_t&);
 
   void write(ostream &os = cout) const;
   void read(istream &is = cin);

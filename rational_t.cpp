@@ -44,9 +44,33 @@ bool rational_t::cero_equal(const double precision) const
     return fabs(value()) < precision ? true : false;
 }
 
-// rational_t rational_t::add(const rational_t& r)
-// {
-// }
+int mcd(int a, int b)
+{
+    for (;;)
+    {
+        if (a == 0) return b;
+        b %= a;
+        if (b == 0) return a;
+        a %= b;
+    }
+}
+
+int lcm(int a, int b)
+{
+    int temp = mcd(a, b);
+
+    return temp ? (a / temp * b) : 0;
+}
+
+ rational_t rational_t::add(const rational_t& r)
+ {
+   int min = lcm(get_den(), r.get_den());
+   cout << min << endl;
+   int new_nom = (min / r.get_den()) * r.get_num() + get_num();
+   cout << new_nom << endl;
+
+   return rational_t (new_nom, min);
+ }
 
 // rational_t rational_t::substract(const rational_t& r)
 // {
@@ -59,6 +83,8 @@ bool rational_t::cero_equal(const double precision) const
 // rational_t rational_t::divide(const rational_t& r)
 // {
 // }
+
+
 
 void rational_t::write(ostream &os) const
 {

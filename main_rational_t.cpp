@@ -1,7 +1,9 @@
 
 #include <iostream>
+
 #include <cmath>
 #include <vector>
+
 #include "rational_t.hpp"
 
 using namespace std;
@@ -19,9 +21,10 @@ bool search(const rational_t *v, const int n, const rational_t &x)
     return false;
 };
 
+
 int main()
 {
-    rational_t a(1, 2), b(3), c, d(3);
+    rational_t a(1, 2), b(3), c, d(1, 2);
     vector<rational_t> v;
 
     v.push_back(a);
@@ -38,6 +41,9 @@ int main()
     a.write();
     cout << "b: ";
     b.write();
+
+
+    b.add(a).write();
 
     c.read();
     cout << "c: ";
