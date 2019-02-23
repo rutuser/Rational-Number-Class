@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cassert>
 #include <cmath>
+#include <fstream>
 
 #define EPSILON 1e-6
 
@@ -56,6 +57,14 @@ public:
    rational_t multiply(const rational_t&);
    rational_t divide(const rational_t&);
 
+  // Sobrecarga de operadores
+   rational_t operator+(const rational_t&);
+   rational_t operator-(const rational_t&);
+   rational_t operator*(const rational_t&);
+   rational_t operator/(const rational_t&);
+
   void write(ostream &os = cout) const;
   void read(istream &is = cin);
+
+  friend ostream &operator<<(ostream &os, const rational_t&);
 };

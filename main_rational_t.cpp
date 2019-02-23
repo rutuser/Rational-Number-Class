@@ -42,12 +42,13 @@ int main()
     cout << "b: ";
     b.write();
 
-
-    b.add(a).write();
+    cout << a - b;
 
     c.read();
     cout << "c: ";
     c.write();
+
+    cout << b;
 
     cout << "Opuesto de a: ";
     a.opposite().write();

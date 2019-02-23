@@ -1,5 +1,6 @@
 #include <iostream>
 #include <math.h>
+#include <fstream>
 
 #include "rational_t.hpp"
 
@@ -65,24 +66,58 @@ int lcm(int a, int b)
  rational_t rational_t::add(const rational_t& r)
  {
    int min = lcm(get_den(), r.get_den());
-   cout << min << endl;
-   int new_nom = (min / r.get_den()) * r.get_num() + get_num();
-   cout << new_nom << endl;
+   int new_nom = ((min / get_den()) * get_num())
+                  + ((min / r.get_den()) * r.get_num());
 
    return rational_t (new_nom, min);
  }
 
-// rational_t rational_t::substract(const rational_t& r)
-// {
-// }
+ rational_t rational_t::substract(const rational_t& r)
+ {
+   int min = lcm(get_den(), r.get_den());
+   int new_nom = ((min / get_den()) * get_num())
+                  - ((min / r.get_den()) * r.get_num());
 
-// rational_t rational_t::multiply(const rational_t& r)
-// {
-// }
+    return rational_t (new_nom, min);
+ }
 
-// rational_t rational_t::divide(const rational_t& r)
-// {
-// }
+ rational_t rational_t::multiply(const rational_t& r)
+ {
+   return rational_t (get_num() * r.get_num(), get_den() * r.get_den());
+ }
+
+ rational_t rational_t::divide(const rational_t& r)
+ {
+   return rational_t (get_num() * r.get_den(), get_den() * r.get_num());
+ }
+
+ rational_t rational_t::operator+(const rational_t& r)
+ {
+   int min = lcm(get_den(), r.get_den());
+   int new_nom = ((min / get_den()) * get_num())
+                  + ((min / r.get_den()) * r.get_num());
+
+   return rational_t (new_nom, min);
+ }
+
+ rational_t rational_t::operator-(const rational_t& r)
+ {
+   int min = lcm(get_den(), r.get_den());
+   int new_nom = ((min / get_den()) * get_num())
+                  - ((min / r.get_den()) * r.get_num());
+
+    return rational_t (new_nom, min);
+ }
+
+ rational_t rational_t::operator*(const rational_t& r)
+ {
+   return rational_t (get_num() * r.get_num(), get_den() * r.get_den());
+ }
+
+ rational_t rational_t::operator/(const rational_t& r)
+ {
+   return rational_t (get_num() * r.get_den(), get_den() * r.get_num());
+ }
 
 
 
@@ -98,4 +133,10 @@ void rational_t::read(istream &is)
     cout << "Denominador: ";
     is >> den_;
     assert(den_ != 0);
+}
+
+ostream &operator<<(ostream &os, const rational_t &r)
+{
+    os << r.get_num() << "/" << r.get_den() << "=" << r.value() << endl;
+    return os;
 }
