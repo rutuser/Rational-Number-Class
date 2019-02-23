@@ -37,12 +37,14 @@ int main()
 
     cout << search(v.data(), v.size(), d) << endl;
 
+    //v.erase(v.begin(), v.end());
+
+    v.clear();
+
     cout << "a: ";
     a.write();
     cout << "b: ";
     b.write();
-
-    cout << a - b;
 
     c.read();
     cout << "c: ";
@@ -78,17 +80,14 @@ int main()
     // }
 
     // FASE IV
-    // cout << "a + b: ";
-    // a.add(b).write();
+    cout << "a + b: " << a + b;
 
-    // cout << "b - a: ";
-    // b.substract(a).write();
+    cout << "b - a: " << b - a;
 
-    // cout << "a * b: ";
-    // a.multiply(b).write();
+    cout << "a * b: " << a * b;
 
-    // cout << "a / b: ";
-    // a.divide(b).write();
+    cout << "a / b: ";
+    a.divide(b).write();
 
     return 0;
 }
