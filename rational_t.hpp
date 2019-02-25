@@ -1,3 +1,14 @@
+/**
+ * @file ractional_t.hpp
+ *
+ * @brief Class program page
+ *
+ * @ingroup PackageName
+ *
+ * @author Michal Ruzicka Ruzicka
+ * Contact: alu0101305561@ull.edu.es
+ */
+ 
 #pragma once
 
 #include <iostream>
